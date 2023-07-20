@@ -1,12 +1,12 @@
 import {BuildOptions} from "./types/config";
 import webpack from "webpack";
-import path from "path";
 import {buildPlugins} from "./buildPlugins";
 import {buildLoader} from "./buildLoader";
 import {buildResolvers} from "./buildResolvers";
+import {buildDevServer} from "./buildDevServer";
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-    const {mode, paths} = options
+    const {mode, paths, isDev} = options
     return {
         mode: mode, // development или production
         entry: paths.entry, // resolve склеивает участки пути | entry входная точка приложения | __dirname корневая папка
@@ -20,5 +20,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             rules: buildLoader() // лоудеры, нужны для сборки файлов которые не являются js или json
         },
         resolve: buildResolvers(),
+        devtool: isDev ? 'inline-source-map' : undefined, // делает карты исходного кода, по которым можно отследить в каком файде произошла ошибка
+        devServer: isDev ? buildDevServer(options) : undefined
     }
 }

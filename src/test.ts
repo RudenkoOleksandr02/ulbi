@@ -1,4 +1,4 @@
 
-export function someFn() {
-    console.log('RANDOM FUNCTION')
+export function someFn(): void {
+    console.log('RANDOM FUNCTION 1111')
 }
