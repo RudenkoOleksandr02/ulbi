@@ -30,7 +30,13 @@
     // import * as React from 'react';
     // можно писать такой
     // import React from 'react';
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    // чтоб не указывать текущую папку при импорте
+    "baseUrl": ".",
+    // начальная точка импорта папка src
+    "paths": {
+      "*": ["./src/*"]
+    }
   },
   "ts-node": { // для успешной сборки с импортами
     "compilerOptions": {

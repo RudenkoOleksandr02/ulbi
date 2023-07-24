@@ -19,7 +19,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         module: {
             rules: buildLoaders(options) // лоудеры, нужны для сборки файлов которые не являются js или json
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers(options),
         devtool: isDev ? 'inline-source-map' : undefined, // делает карты исходного кода, по которым можно отследить в каком файде произошла ошибка
         devServer: isDev ? buildDevServer(options) : undefined
     }
