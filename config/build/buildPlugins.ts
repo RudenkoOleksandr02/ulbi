@@ -15,6 +15,7 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         }),
         new webpack.DefinePlugin({ // прокидывание глобальных переменных в само приложение
             __IS_DEV__: JSON.stringify(isDev) // JSON.stringify() преобразует значение JavaScript в строку формата JSON
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
