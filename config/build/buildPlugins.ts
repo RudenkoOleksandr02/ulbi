@@ -3,15 +3,18 @@ import webpack from "webpack";
 import {BuildOptions} from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-export function buildPlugins({paths}: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
     return [
-        new HTMLWebpackPlugin({ // создает html с подключенными скриптами
-            template: paths.html // шаблон для html
+        new HTMLWebpackPlugin({
+            template: paths.html
         }),
-        new webpack.ProgressPlugin(), // прогресс сборки
-        new MiniCssExtractPlugin({ // для css
-            filename: 'css/[name].[contenthash:8].css', // расположение и название файлов
-            chunkFilename: 'css/[name].[contenthash:8].css' // css для ассинхронных файлов
+        new webpack.ProgressPlugin(),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash:8].css',
+            chunkFilename: 'css/[name].[contenthash:8].css'
+        }),
+        new webpack.DefinePlugin({ // прокидывание глобальных переменных в само приложение
+            __IS_DEV__: JSON.stringify(isDev) // JSON.stringify() преобразует значение JavaScript в строку формата JSON
         })
     ]
 }
