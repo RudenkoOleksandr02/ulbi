@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    // строгая провверка на null и undefined
+    "strictNullChecks": true,
     // то куда производится сборка, в данном случае не важна так как собираю с помощью webpack
     "outDir": "./dist/",
     // Подсвечивает все места где не указан тип
@@ -42,5 +44,10 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".eslintrc.js"
+  ]
 }
