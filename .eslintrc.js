@@ -5,7 +5,8 @@ module.exports = {
     },
     extends: [
         'standard-with-typescript',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        'plugin:i18next/recommended'
     ],
     overrides: [
         {
@@ -27,7 +28,8 @@ module.exports = {
 
     },
     plugins: [
-        'react'
+        'react',
+        'i18next'
     ],
     rules: {
         'react/jsx-indent': [2, 4], // количество отступов в jsx
@@ -39,7 +41,8 @@ module.exports = {
         '@typescript-eslint/no-misused-promises': 'warn', //  неправильное использование промисов
         '@typescript-eslint/no-floating-promises': 'warn', // промисы не сохраняются в переменную и не оборачиваются then catch
         'react/no-deprecated': 'off', //  помогает обнаружить устаревшие функции, методы или свойства в коде React
-        '@typescript-eslint/naming-convention': 'warn' // соглашения о наименованиях и идентификаторах
+        '@typescript-eslint/naming-convention': 'warn', // соглашения о наименованиях и идентификаторах
+        'i18next/no-literal-string': ['error', { markupOnly: true }] // только отсутствие переводов внутри jsx
     },
     globals: {
         __IS_DEV__: true // глобальная переменная
